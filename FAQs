@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Area Information</title>
+  <!-- Google Font: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    #searchInput {
+      margin-bottom: 20px;
+    }
+    .table-responsive {
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    table {
+      width: 100%;
+      font-size: 0.9rem;
+    }
+    th, td {
+      white-space: normal;
+      word-wrap: break-word;
+      overflow: visible;
+    }
+    th:nth-child(1), td:nth-child(1) { width: 30%; }
+    th:nth-child(2), td:nth-child(2) { width: 15%; }
+    th:nth-child(3), td:nth-child(3) { width: 55%; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="Navigation.jpg" class="img-fluid mb-3" alt="Area Information Banner">
+    
+    <input type="text" id="searchInput" class="form-control" placeholder="Search for area information...">
+    
+    <div class="table-responsive my-3">
+      <table class="table table-striped" id="areaTable">
+        <thead>
+          <tr>
+            <th>AREA/FEATURE</th>
+            <th>Hall</th>
+            <th>LOCATION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>AI Tour Desk</td><td>5</td><td>North of Hall, next to Info Desk</td></tr>
+          <tr><td>Announcement Stage 1 /Private</td><td>3</td><td>The middle-west side of Hall 3</td></tr>
+          <tr><td>Announcement Stage 2 /Gov</td><td>4</td><td>Middle-west side of Hall 4</td></tr>
+          <tr><td>Boxing Arena (Golden Glove)</td><td>3</td><td>South end, opposite to F&B Area</td></tr>
+          <tr><td>Careem/Taxi Point</td><td>Outdoor</td><td>CP2 Parking - Opp Hall 1 Majlis exit</td></tr>
+          <tr><td>Code Stage</td><td>1A</td><td>Northwest corner of Hall 1A</td></tr>
+          <tr><td>Country Pavilions</td><td>3</td><td>North end of Hall 3A</td></tr>
+          <tr><td>Coworking Stations</td><td>6</td><td>West of Hall 6, Opposite Orbital Stage 4</td></tr>
+          <tr><td>DeepFest Lounge</td><td>5</td><td>Northwest corner (next to tunnel entrance)</td></tr>
+          <tr><td>DeepFest Main Stage</td><td>5</td><td>Northeast corner</td></tr>
+          <tr><td>DeepMedia Stage</td><td>5</td><td>Southwest corner</td></tr>
+          <tr><td>DGA Stage</td><td>2</td><td>Southeast of Hall 2, opposite info desk</td></tr>
+          <tr><td>Food Area</td><td>2</td><td>Corner of Hall 2, in front of Orbital Stage 2</td></tr>
+          <tr><td>Food Festival</td><td>Outdoor</td><td>Central courtyard</td></tr>
+          <tr><td>Food Truck X2</td><td>2</td><td>Hall 2 corner, near Premium Lounge</td></tr>
+          <tr><td>Info Desk</td><td>1</td><td>Corner of East & South wing, near Oracle East</td></tr>
+          <tr><td>Investor Lounge</td><td>1A</td><td>Southeast corner</td></tr>
+          <tr><td>Investor Stage</td><td>1A</td><td>Southwest corner</td></tr>
+          <tr><td>LEAP Lounge</td><td>2</td><td>Close to Fine Dining Restaurant</td></tr>
+          <tr><td>LEAP Lounge</td><td>3</td><td>West side, opposite Premium Lounge</td></tr>
+          <tr><td>Leap Main Stage</td><td>1</td><td>North end of West wing</td></tr>
+          <tr><td>Lost and Found Desk</td><td>2</td><td>Behind the registration area</td></tr>
+          <tr><td>Premium Lounge</td><td>2</td><td>South of Hall, behind registration</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+      var filter = this.value.toUpperCase();
+      var rows = document.querySelector("#areaTable tbody").rows;
+      for (var i = 0; i < rows.length; i++) {
+        var firstCol = rows[i].cells[0].textContent.toUpperCase();
+        var secondCol = rows[i].cells[1].textContent.toUpperCase();
+        var thirdCol = rows[i].cells[2].textContent.toUpperCase();
+        if (firstCol.indexOf(filter) > -1 || secondCol.indexOf(filter) > -1 || thirdCol.indexOf(filter) > -1) {
+          rows[i].style.display = "";
+        } else {
+          rows[i].style.display = "none";
+        }
+      }
+    });
+  </script>
+</body>
+</html>
